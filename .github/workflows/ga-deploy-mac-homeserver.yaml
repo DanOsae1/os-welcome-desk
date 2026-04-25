@@ -30,7 +30,7 @@ jobs:
           file: ./backend/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.BACKEND }}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.BACKEND }}:latest
       - name: Build frontend image and push to registry
         uses: docker/build-push-action@v7
         with:
@@ -38,7 +38,7 @@ jobs:
           file: ./Daniel-CV-Welcome-Desk-Frontend/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.FRONTEND}}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.FRONTEND}}:latest
       - name: Trigger Coolify deployment
         run: |
           if [ -z "${{ secrets.COOLIFY_WEBHOOK_URL }}" ]; then
