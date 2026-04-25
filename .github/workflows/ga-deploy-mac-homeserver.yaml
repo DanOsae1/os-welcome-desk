@@ -2,7 +2,7 @@ name: Build, Push to GHCR, Deploy to Coolify
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
@@ -39,11 +39,10 @@ jobs:
           platoforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.FRONTEND}}:latest
-
-      - name: Trigger Coolify deploy
-          run: |
-            if [ -z "${{ secrets.COOLIFY_WEBHOOK_URL }}" ]; then
-                echo "Missing COOLIFY_WEBHOOK_URL secret"
-                exit 1
-            fi
-            curl --request GET '${{ secrets.COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
+      - name: Trigger Coolify deployment
+        run: |
+          if [ -z "${{ secrets.COOLIFY_WEBHOOK_URL }}" ]; then
+              echo "Missing COOLIFY_WEBHOOK_URL secret"
+              exit 1
+          fi
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
