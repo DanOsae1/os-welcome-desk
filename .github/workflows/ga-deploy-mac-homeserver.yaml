@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  OWNER: osaebros
+  OWNER: danosae1
   BACKEND: welcome-desk-backend
   FRONTEND: welcome-desk-frontend
 
