@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /v1/api
+
+spring:
+  application:
+    name: Daniel-CV-Welcome-Desk-Backend
+
+  ai:
+    model:
+      embedding: ollama
+    vectorstore:
+      qdrant:
+        host: ${QDRANT_HOST:localhost}
+        port: ${QDRANT_PORT:6334}
+        api-key: ${QDRANT_API_KEY:}
+        collection-name: ${QDRANT_COLLECTION_NAME:danielcv}
+        use-tls: ${QDRANT_USE_TLS:false}
+        initialize-schema: ${QDRANT_INITIALIZE_SCHEMA:true}
+    chat:
+      client:
+        enable: false
+    ollama:
+      base-url: ${OS_LLM_URL}
+      init:
+        pull-model-strategy: when_missing
+        time-out: 5m
+        max-retries: 1
+        embedding:
+          include: true
+          options:
+            model: ${OS_LLM_EMBEDDING_MODEL:qwen3-embedding:4b}
+            truncate: false
+            keep-alive: 5m
+      chat:
+        options:
+          model: ${OS_LLM_MODEL:qwen3:1.7b}
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
+    com.osabros.welcomeDesk: DEBUG
