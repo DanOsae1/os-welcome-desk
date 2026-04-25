@@ -6,8 +6,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  BACKEND: WelcomeDeskBackend
-  FRONTEND: WelcomeDeskFrontend
+  BACKEND: welcome-desk-backend
+  FRONTEND: welcome-desk-frontend
 
 jobs:
   build-and-push:
