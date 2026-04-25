@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend/
-          file: Dockerfile
+          file: ./backend/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.BACKEND }}:latest
@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./Daniel-CV-Welcome-Desk-Frontend/
-          file: Dockerfile
+          file: ./Daniel-CV-Welcome-Desk-Frontend/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.FRONTEND}}:latest
