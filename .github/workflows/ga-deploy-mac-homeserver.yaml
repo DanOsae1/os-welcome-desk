@@ -26,17 +26,17 @@ jobs:
       - name: Build backend image and push to registry
         uses: docker/build-push-action@v4
         with:
-          context: backend/
+          context: ./backend/
           file: Dockerfile
-          platoforms: linux/amd64
+          platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.BACKEND }}:latest
       - name: Build frontend image and push to registry
         uses: docker/build-push-action@v4
         with:
-          context: Daniel-CV-Welcome-Desk-Frontend/
+          context: ./Daniel-CV-Welcome-Desk-Frontend/
           file: Dockerfile
-          platoforms: linux/amd64
+          platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.FRONTEND}}:latest
       - name: Trigger Coolify deployment
